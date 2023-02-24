@@ -129,6 +129,7 @@ struct NodeData<ID> {
 
 /// Data for an edge in a vector graph.
 #[cfg_attr(feature = "serialize", derive(Serialize, Deserialize))]
+#[derive(Clone)]
 struct EdgeData<ID> {
     nodes: [ID; 2],
 }
@@ -355,6 +356,7 @@ where
 ///
 /// The basic task is to arrange the final outgoing and incoming edges in the
 /// linked lists appropriately (i.e. first outgoing, then incoming edges).
+#[derive(Clone)]
 pub struct VecGraphBuilder<ID> {
     /// The outgoing and incoming edges of each node.
     nodes: Vec<[Vec<ID>; 2]>,
